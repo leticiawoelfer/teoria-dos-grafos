@@ -7,8 +7,6 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import algoritmo.dijkstra.Aresta;
@@ -32,13 +30,13 @@ public class CaminhoDasPontes {
 	public final String caminhoArquivo = "c:\\temp\\entrada.in";
 	
 	public void processar() throws IOException {
-//		String caminhoArquivo = lerArquivo();
 		List<String> linhas = Files.readAllLines(Paths.get(caminhoArquivo));
 		boolean primeiraLinha = true;
 		int qtdVertices;
 		int qtdArestas;
 		List<Aresta> arestas = new ArrayList<>();
 		int destino = 0;
+		String conteudoArquivo = "";
 		for (String conteudoLinha : linhas) {
 			if(primeiraLinha) {
 				if(conteudoLinha.length() != 3) {
@@ -52,6 +50,7 @@ public class CaminhoDasPontes {
 				}
 				primeiraLinha = false;
 				destino = qtdVertices + 1;
+				conteudoArquivo += conteudoLinha+"\n";
 				continue;
 			}			
 			
@@ -62,23 +61,18 @@ public class CaminhoDasPontes {
 			
 			int verticeOrigem = Character.getNumericValue(conteudoLinha.charAt(0));
 			int verticeDestino = Character.getNumericValue(conteudoLinha.charAt(2));
-			
-			
-			
-			
+
 			int valor = Character.getNumericValue(conteudoLinha.charAt(4));
 			Aresta edge = new Aresta(verticeOrigem, verticeDestino, valor);
 			arestas.add(edge);
-						
-		}
-		
-		
+			conteudoArquivo += conteudoLinha+"\n";
+		}		
 		
 		Grafo grafo = new Grafo(arestas.toArray(new Aresta[arestas.size()]));
 		grafo.calcularDistancia(ORIGEM);
 		
-		System.out.println("O menor caminho para o destino '" + destino + "' é: "+ grafo.getCaminhoMinimo(destino));
-		
+		System.out.println("Entrada\n"+conteudoArquivo);
+		System.out.println("Saída\n"+grafo.getCaminhoMinimo(destino));		
 	}
 	
 	public boolean validaVerticeAresta(int qtdVertices, int qtdArestas) {

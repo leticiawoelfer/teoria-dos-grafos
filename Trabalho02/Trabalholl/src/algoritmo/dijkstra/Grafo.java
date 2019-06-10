@@ -12,7 +12,6 @@ public class Grafo {
 	private Vertice[] vertices;
 	private int qtdVertice;
 	private int qtdAresta;
-	private final int ORIGEM = 0;
 
 	public Grafo(Aresta[] aresta) {
 		this.qtdVertice = calculaQtdVertice(aresta);
