@@ -24,13 +24,7 @@ import algoritmo.dijkstra.Vertice;
 public class CarteiroChines {
 
 	public static final int ORIGEM = 0;
-	private Dijkstra dijkstra;
-	private Map<Vertice, List<Vertice>> matrizCusto = new HashMap<>();
 
-	public CarteiroChines() {
-		super();
-		dijkstra = new Dijkstra();
-	}
 	// A - 0, B - 1, C - 2, D - 3, E - 4, F - 5, G - 6, H - 7, I - 8, J - 9, K - 10,
 	// L - 11, M - 12, N - 13, O - 14, P - 15
 
@@ -65,15 +59,8 @@ public class CarteiroChines {
 		Grafo grafo = new Grafo(arestas);
 		CarteiroChines carteiroChines = new CarteiroChines();
 		carteiroChines.matrizCusto(grafo);
-		//grafo.calcularDistancia(ORIGEM);
-		//System.out.println("O menor caminho para o destino '" + 11 + "' é: " + grafo.getCaminhoMinimo(11));
 	}
 	
-
-	public void processar() throws IOException {
-	
-	}
-
 	protected static List<Vertice> grauImpar(Grafo grafo) {
 		List<Vertice> impares = new ArrayList<>();
 		for (Vertice vertice : grafo.getVertices())
