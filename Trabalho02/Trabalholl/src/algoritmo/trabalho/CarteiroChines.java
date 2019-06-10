@@ -83,22 +83,16 @@ public class CarteiroChines {
 	}
 
 	public static void matrizCusto(Grafo grafo) {
-		Map<Vertice, Vertice> matrizCusto = new HashMap<>();
-		List<Vertice> impares = Arrays.asList(grafo.getVertices());
-		List<Vertice> aux = impares;
-		//List<Vertice> aux = Arrays.asList(grafo.getVertices());
-		//List<Vertice> impares = grauImpar(grafo);
-		for (Vertice origin : aux) {
-			for (Vertice destination : impares) {
-				grafo.calcularDistancia(origin.getCodigo());
-				matrizCusto.put(origin, grafo.getVerticeComCaminhoMinimo(destination.getCodigo()));
-			}
-		}
-		for (Map.Entry<Vertice, Vertice> road : matrizCusto.entrySet()) {
-			Vertice vertice = road.getKey();
-			//System.err.println("Vertice:" + road.getKey().getCodigo());
-			System.out.println("Distancia entre [" + road.getValue().getCodigo() + " e "
-					+ vertice.getCodigo() + "] = "+ vertice.getDistancia());//road.getValue().getDistancia()
+		Vertice[][] matrizCusto = new Vertice[grafo.getVertices().length][grafo.getVertices().length];
+		List<Vertice> vertices = Arrays.asList(grafo.getVertices());
+		List<Vertice> impares = grauImpar(grafo);
+		Dijkstra dj = new Dijkstra();
+		for (Vertice origin : impares) {
+			for (Vertice destination : vertices) {
+				if (origin != destination) {
+					dj.menorCaminho(grafo, origin, destination);
+				}
+			}//incompleto - dijkstra ainda com erros, não conseguimos seguir daqui
 		}
 	}
 
