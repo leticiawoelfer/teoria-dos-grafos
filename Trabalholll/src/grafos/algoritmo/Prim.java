@@ -37,7 +37,7 @@ public class Prim {
 			String linha[] = conteudoLinha.trim().split(" ");
 			if (primeiraLinha) {
 				if (linha.length >= 3) {
-					System.err.println("Arquivo inválido. A primeira linha deve conter 3 caracters");
+					System.err.println("Arquivo invÃ¡lido. A primeira linha deve conter 3 caracters");
 					return;
 				}
 				primeiraLinha = false;
@@ -46,8 +46,8 @@ public class Prim {
 			}
 
 			if (linha.length >= 4) {
-				System.err.println("Conteudo da linha inválido, deve conter 3 "
-						+ "posições contendo 'Vertice Vertice Valor'");
+				System.err.println("Conteudo da linha invÃ¡lido, deve conter 3 "
+						+ "posiÃ§Ãµes contendo 'Vertice Vertice Valor'");
 				return;
 			}
 
@@ -63,21 +63,21 @@ public class Prim {
 		int somaArvoreGeradoraMinima = prim(grafo);
 
 		System.out.println("Entrada\n" + conteudoArquivo);
-		System.out.println("Saída\n" + somaArvoreGeradoraMinima);
+		System.out.println("SaÃ­da\n" + somaArvoreGeradoraMinima);
 	}
 
 	private int prim(Grafo grafo) {
 		List<Vertice> vertices = Arrays.asList(grafo.getVertices());
 		Map<Integer, Prim> tabelaPrim = new HashMap<>();
 		for (Vertice v : vertices) {
-			tabelaPrim.put(v.getCodigo(), new Prim(0, null, false));//Integer.MAX_VALUE
+			tabelaPrim.put(v.getCodigo(), new Prim(0, null, false));
 		}		
 		int proxMenor = 0;
 		for (Vertice vOrigem : vertices) {
 			Prim item = tabelaPrim.get(proxMenor);
 			item.executado = true;
 			tabelaPrim.put(vOrigem.getCodigo(), item);
-			System.out.println("Executando vértice: "+vOrigem.getCodigo());
+			System.out.println("Executando vÃ©rtice: "+vOrigem.getCodigo());
 			for (Aresta a : vOrigem.getArestas()) {
 				Prim adjacente = tabelaPrim.get(a.getDestino());
 				if (!adjacente.executado) {
@@ -104,7 +104,7 @@ public class Prim {
 	}
 
 	private int getProximoMenor(Map<Integer, Prim> tabelaPrim) {
-		int menorDist = 100;//Integer.MAX_VALUE;
+		int menorDist = Integer.MAX_VALUE;
 		int proxMenor = 0;
 		for (Map.Entry<Integer, Prim> item : tabelaPrim.entrySet()) {
 			if (!item.getValue().executado) {
@@ -154,7 +154,6 @@ class Aresta implements Comparable<Aresta> {
 
 	@Override
 	public int compareTo(Aresta aresta) {
-		// 0:date1 == date2 , 1:date1 > date2, -1:date1 < date2
 		if (this.getPeso() < aresta.getPeso())
 			return -1;
 		else if (this.getPeso() == aresta.getPeso())
