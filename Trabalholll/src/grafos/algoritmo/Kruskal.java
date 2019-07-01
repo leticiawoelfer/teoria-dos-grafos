@@ -13,7 +13,7 @@ import java.util.List;
  * @author gabriela.sena, leticia.woelfer
  *
  */
-/*public class Kruskal {
+public class Kruskal {
 
 	public static void main(String[] args) throws IOException {
 		new Kruskal().processar();
@@ -30,7 +30,7 @@ import java.util.List;
 			String linha[] = conteudoLinha.trim().split(" ");
 			if (primeiraLinha) {
 				if (linha.length >= 3) {
-					System.err.println("Arquivo inv·lido. A primeira linha deve conter 3 caracters");
+					System.err.println("Arquivo inv√°lido. A primeira linha deve conter 3 caracters");
 					return;
 				}
 				primeiraLinha = false;
@@ -39,8 +39,8 @@ import java.util.List;
 			}
 
 			if (linha.length >= 4) {
-				System.err.println("Conteudo da linha inv·lido, deve conter 3 "
-						+ "posiÁıes contendo 'Vertice Vertice Valor'");
+				System.err.println("Conteudo da linha inv√°lido, deve conter 3 "
+						+ "posi√ß√µes contendo 'Vertice Vertice Valor'");
 				return;
 			}
 
@@ -56,7 +56,7 @@ import java.util.List;
 		int somaArvoreGeradoraMinima = kruskal(grafo, arestas);
 
 		System.out.println("Entrada\n" + conteudoArquivo);
-		System.out.println("SaÌda\n" + somaArvoreGeradoraMinima);
+		System.out.println("Sa√≠da\n" + somaArvoreGeradoraMinima);
 	}
 
 	private int kruskal(Grafo grafo, List<Aresta> listaArestas) {
@@ -70,7 +70,7 @@ import java.util.List;
 		for (Aresta aresta : listaArestas) {
 			Vertice origem = listaVertices.get(aresta.getOrigem());
 			Vertice destino = listaVertices.get(aresta.getDestino());
-			//se origem e destino nao sao do mesmo conjunto, ent„o unir e somar o valor
+			//se origem e destino nao sao do mesmo conjunto, ent√£o unir e somar o valor
 			if (conjuntoDisjunto.procurar(origem) != conjuntoDisjunto.procurar(destino)) {
 				conjuntoDisjunto.unir(origem, destino);
 				somaMenorCaminho = somaMenorCaminho + aresta.getPeso();
@@ -249,11 +249,11 @@ class ConjuntoDisjunto {
 		int codigoOrigem = procurar(origem);
 		int codigoDestino = procurar(destino);
 
-		// Vertices s„o iguais, logo do mesmo conjunto
+		// Vertices s√£o iguais, logo do mesmo conjunto
 		if (codigoOrigem == codigoDestino)
 			return;
 
-		// Busca os vÈrtices pais na lista de vÈrtices
+		// Busca os v√©rtices pais na lista de v√©rtices
 		Vertice vertA = getVertice(codigoOrigem);
 		Vertice vertB = getVertice(codigoDestino);
 
@@ -265,10 +265,9 @@ class ConjuntoDisjunto {
 				vertB.setPai(vertA);
 			} else {
 				vertB.setPai(vertA);
-				// vertA.getGrau()++; //nao entendi isso aqui
 			}
 		} catch (NullPointerException e) {
-			System.err.println("Ocorreu um erro! O algoritmo n„o encontrou o vÈrtice desejado na lista de vÈrtices.");
+			System.err.println("Ocorreu um erro! O algoritmo n√£o encontrou o v√©rtice desejado na lista de v√©rtices.");
 		}
 		
 	}
@@ -282,4 +281,3 @@ class ConjuntoDisjunto {
 		return null;
 	}
 }
-*/
